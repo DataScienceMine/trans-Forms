@@ -60,10 +60,56 @@ the metadata object hold all properties that users define.
 }
 ```
 ### Structure Object
+
+```js
+//  Structure 
+{
+  id: {type: 'number', allowInput: false, attr: 'auto-increment'},
+  name: {type: 'text', placeholder: 'Enter Your Name', allowInput: true, default: 'No Name', allowNulls:true, label: 'Name', small: 'the name you will use will appeare in your profile.'},
+  age: {type: 'number', placeholder: 'Enter Your Age', allowInput: true, allowNulls: false, label: 'Age', small: 'Your age will be used for occasions'},
+  email: {type: 'email', placeholder: 'Enter Your Email', allowInput: true, allowNulls: false, label: 'Email', small: 'We\'ll never share your email with anyone else.'}
+}
+```
+structure object contains all properties that users define.
+each key will be the `id` for a generated *field*, each `id` have:
+* **type** is the identifier of field `number`, `string`, `text`, `boolean`, `datetime`, `email`, etc.
+* **allowInput** if `true` it will generate input in form, if `false` will not be generated in form
+  * As `id` you can make *auto-increment* and will not be in form.
+* **attr** attributes like `auto-incremene`, etc.
+* **placeholder** if the field has an input in form this will be the placeholder.
+* **default** if the field has an input in form and the form is submitted and this field is missing this will be the default value of it.
+* **allowNulls** if the field has an input in form and the form is submitted and this field is missing, if **allowNulls** is `true` it will be the *NaN*, and if it's `false` this will raise and error.
+* **label** if the field has an input in form this will be the label.
+* **small** if the field has an input in form this will be the small desription.
+
+the structure is still under development.
+
 ## SetKeys
+```js
+forms.SetKeys({
+    name: {key: 'a', allowAlt: true, do: forms.HoverInput}, //  Hover input name when pressing A+Alt
+    form: {key: 'Enter', allowAlt: true, do: forms.Submit}  //  Hover element form when pressing Enter+Alt
+});
+```
+this function allow to make a key listener for the form and table.
+
+* **key** what is the key that will trigger the listener's function
+* **allowAlt** it allow to have `Alt` + `Key` option
+* **allowCtrl** it allow to have `Ctrl` + `Key` option
+* **do** it contains the function callBack that will be called when the listener triggered.
+  * like `form.HoverInput` will select `name` input when you click `a` + `Alt`.
+
 ## Generate
+this function will generate the given structure in the constructor.
+```js
+forms.Generate({Debug: true});
+```
+* **Debug** if `true` it allows debugging mode
+
 ## RunFlow
 ## Insert
+Insert values to the underlayer data structure directly, without need of form.
+
 ## Submit
 ## HoverInput
 ## InsertIntoTable
