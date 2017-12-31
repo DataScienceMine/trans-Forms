@@ -6,6 +6,8 @@ I had a problem in my company **ERP** system, each time system create invoice, s
 
 That's will lower the server requests especially when many works in system that have to push a lot of requests to server.
 
+
+
 # Installation
 ```html
 <script src="../Source/Forms.js"></script>
