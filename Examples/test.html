@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>trans Formers | Not Working</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
+    <script src="../Source/Forms.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function (){
+            forms = new Forms({ //  MetaData
+                makeForm: [true, 'form', '', 'POST'],
+                makeTable: [true, 'table'],
+                allowCRUD: true,
+                xmlRequese: []
+            }, {    //  Structure 
+                id: {type: 'number', allowInput: false, attr: 'auto-increment'},
+                name: {type: 'text', placeholder: 'Enter Your Name', allowInput: true, default: 'No Name', allowNulls:true, label: 'Name', small: 'the name you will use will appeare in your profile.'},
+                age: {type: 'number', placeholder: 'Enter Your Age', allowInput: true, allowNulls: false, label: 'Age', small: 'Your age will be used for occasions'},
+                email: {type: 'email', placeholder: 'Enter Your Email', allowInput: true, allowNulls: false, label: 'Email', small: 'We\'ll never share your email with anyone else.'}
+            });
+
+            forms.SetKeys({
+                name: {key: 'a', allowAlt: true, do: forms.HoverInput},
+                form: {key: 'Enter', allowAlt: true, do: forms.Submit}
+            });
+
+            forms.Generate({Debug: true});
+
+            forms.RunFlow();
+        };
+        
+
+    </script>
+</head>
+<body id="body">
+    <div class="container">
+        <div id="table"></div>
+        <div id="form"></div>
+    </div>
+</body>
+</html>
